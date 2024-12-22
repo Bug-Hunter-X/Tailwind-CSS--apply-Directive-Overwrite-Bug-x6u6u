@@ -1,0 +1,7 @@
+This bug arises when using Tailwind's `@apply` directive with directives that modify the same CSS property, such as `text-red-500` and `text-blue-500`.  Applying both directives consecutively will result in only the last one taking effect, potentially causing unexpected visual results.  The issue is not immediately apparent and can be hard to debug because the order of `@apply` directives matters. 
+
+```html
+<div class="@apply text-red-500 @apply text-blue-500"></div>
+```
+
+In this example, the element will be blue because `text-blue-500` overwrites `text-red-500`.
